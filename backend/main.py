@@ -1,16 +1,3 @@
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=[
-        "http://localhost:3000",
-        "https://biblioteca-carmindo.vercel.app",
-        "https://biblioteca-univesp.vercel.app",
-        "https://biblioteca-git-master-carmindo.vercel.app",
-    ],
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
-
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from database import engine, Base
@@ -34,6 +21,8 @@ app.add_middleware(
     allow_origins=[
         "http://localhost:3000",
         "https://biblioteca-carmindo.vercel.app",
+        "https://biblioteca-univesp.vercel.app",
+        "https://biblioteca-git-master-carmindo.vercel.app",
     ],
     allow_credentials=True,
     allow_methods=["*"],
