@@ -18,12 +18,7 @@ app = FastAPI(
 # CORS - permite o frontend React se comunicar com a API
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[
-        "http://localhost:3000",
-        "https://biblioteca-carmindo.vercel.app",
-        "https://biblioteca-univesp.vercel.app",
-        "https://biblioteca-git-master-carmindo.vercel.app",
-    ],
+    allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
