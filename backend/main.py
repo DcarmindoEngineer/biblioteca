@@ -1,10 +1,8 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from database import engine, Base
-
 # Importar todos os models para que sejam criados
 import models.models  # noqa: F401
-
 # Importar rotas
 from routes import auth, usuarios, livros, categorias, emprestimos, reservas, multas, relatorios
 
@@ -20,7 +18,10 @@ app = FastAPI(
 # CORS - permite o frontend React se comunicar com a API
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000"],
+    allow_origins=[
+        "http://localhost:3000",
+        "https://biblioteca-carmindo.vercel.app",
+    ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -35,7 +36,6 @@ app.include_router(emprestimos.router, prefix="/emprestimos", tags=["Empréstimo
 app.include_router(reservas.router,    prefix="/reservas",    tags=["Reservas"])
 app.include_router(multas.router,      prefix="/multas",      tags=["Multas"])
 app.include_router(relatorios.router,  prefix="/relatorios",  tags=["Relatórios"])
-
 
 @app.get("/")
 def root():
